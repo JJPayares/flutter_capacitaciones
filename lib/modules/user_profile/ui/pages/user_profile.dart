@@ -8,6 +8,13 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  final List<String> imageUrls = [
+    'https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg',
+    'https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg',
+    'https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg',
+    'https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg',
+    'https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +23,7 @@ class _UserProfileState extends State<UserProfile> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   const Row(
@@ -133,6 +140,24 @@ class _UserProfileState extends State<UserProfile> {
                 ],
               ),
             ),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 4.0,
+                  mainAxisSpacing: 4.0,
+                ),
+                itemCount: imageUrls.length,
+                itemBuilder: (context, index) {
+                  return Image.network(
+                    width: 12,
+                    height: 12,
+                    imageUrls[index],
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
