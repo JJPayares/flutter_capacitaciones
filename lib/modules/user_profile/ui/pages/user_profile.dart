@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_capacitaciones/modules/user_profile/ui/widgets/back_arrow.dart';
+import 'package:flutter_capacitaciones/modules/user_profile/ui/widgets/profile_buttons.dart';
+import 'package:flutter_capacitaciones/modules/user_profile/ui/widgets/profile_pic.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});
@@ -22,30 +25,27 @@ class _UserProfileState extends State<UserProfile> {
       backgroundColor: Colors.blueAccent[700],
       body: SafeArea(
         child: SingleChildScrollView(
-          child: 
-          Column( //Ambos elementos
+          child: Column(
+            //Ambos elementos
             children: [
-              SizedBox( // Seccion del usuario
-                child: 
-                Padding(
+              const SizedBox(
+                // Seccion del usuario
+                child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Row( // Flecha de regresar
+                      Row(
+                        // Flecha de regresar
                         children: [
-                          Icon(Icons.arrow_back, color: Colors.white),
+                          BackArrow(),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16),
                       //Datos de usuario
-                      const CircleAvatar(
-                        radius: 90,
-                        backgroundImage: NetworkImage(
-                            'https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
+                      ProfilePic(),
+                      SizedBox(height: 8),
+                      Text(
                         'Stephany Lebrun',
                         style: TextStyle(
                           fontSize: 24,
@@ -53,15 +53,16 @@ class _UserProfileState extends State<UserProfile> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Text(
+                      Text(
                         'Photographer',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      const Row( // Stats de la cuenta
+                      SizedBox(height: 16),
+                      Row(
+                        // Stats de la cuenta
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Column(
@@ -120,28 +121,13 @@ class _UserProfileState extends State<UserProfile> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
-                      Row( // Botones
+                      SizedBox(height: 16),
+                      Row(
+                        // Botones
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                            child: const Text('Follow'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                            child: const Text('Message'),
-                          ),
+                          ProfileButton(textButton: 'Follow'),
+                          ProfileButton(textButton: 'Mesaage'),
                         ],
                       ),
                     ],
@@ -149,7 +135,8 @@ class _UserProfileState extends State<UserProfile> {
                 ),
               ),
               const SizedBox(height: 10),
-              LayoutBuilder( // Seccion de imagenes
+              LayoutBuilder(
+                // Seccion de imagenes
                 builder: (context, constraints) {
                   int crossAxisCount = 3;
                   double width = constraints.maxWidth;
