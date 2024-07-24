@@ -22,21 +22,23 @@ class _UserProfileState extends State<UserProfile> {
       backgroundColor: Colors.blueAccent[700],
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
+          child: 
+          Column( //Ambos elementos
             children: [
-              SizedBox(
-                // height: MediaQuery.of(context).size.height * 0.51,
-                child: Padding(
+              SizedBox( // Seccion del usuario
+                child: 
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Row(
+                      const Row( // Flecha de regresar
                         children: [
                           Icon(Icons.arrow_back, color: Colors.white),
                         ],
                       ),
                       const SizedBox(height: 16),
+                      //Datos de usuario
                       const CircleAvatar(
                         radius: 90,
                         backgroundImage: NetworkImage(
@@ -59,7 +61,7 @@ class _UserProfileState extends State<UserProfile> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      const Row(
+                      const Row( // Stats de la cuenta
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Column(
@@ -119,7 +121,7 @@ class _UserProfileState extends State<UserProfile> {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      Row(
+                      Row( // Botones
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ElevatedButton(
@@ -147,7 +149,7 @@ class _UserProfileState extends State<UserProfile> {
                 ),
               ),
               const SizedBox(height: 10),
-              LayoutBuilder(
+              LayoutBuilder( // Seccion de imagenes
                 builder: (context, constraints) {
                   int crossAxisCount = 3;
                   double width = constraints.maxWidth;
