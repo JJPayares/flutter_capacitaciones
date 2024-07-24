@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_capacitaciones/modules/user_profile/ui/widgets/back_arrow.dart';
 import 'package:flutter_capacitaciones/modules/user_profile/ui/widgets/profile_buttons.dart';
 import 'package:flutter_capacitaciones/modules/user_profile/ui/widgets/profile_pic.dart';
+import 'package:flutter_capacitaciones/modules/user_profile/ui/widgets/profile_stats.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});
@@ -43,7 +44,9 @@ class _UserProfileState extends State<UserProfile> {
                       ),
                       SizedBox(height: 16),
                       //Datos de usuario
-                      ProfilePic(),
+                      ProfilePic(
+                        radius: 70,
+                      ),
                       SizedBox(height: 8),
                       Text(
                         'Stephany Lebrun',
@@ -56,6 +59,7 @@ class _UserProfileState extends State<UserProfile> {
                       Text(
                         'Photographer',
                         style: TextStyle(
+                          fontWeight: FontWeight.w400,
                           fontSize: 16,
                           color: Colors.white,
                         ),
@@ -67,55 +71,25 @@ class _UserProfileState extends State<UserProfile> {
                         children: [
                           Column(
                             children: [
-                              Text(
-                                '150',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                'Posts',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
+                              ProfileStats(
+                                property: 'Posts',
+                                number: '150',
                               ),
                             ],
                           ),
                           Column(
                             children: [
-                              Text(
-                                '834',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                'Followers',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
+                              ProfileStats(
+                                property: 'Followers',
+                                number: '834',
                               ),
                             ],
                           ),
                           Column(
                             children: [
-                              Text(
-                                '341',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                'Following',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
+                              ProfileStats(
+                                property: 'Following',
+                                number: '341',
                               ),
                             ],
                           ),
@@ -133,7 +107,7 @@ class _UserProfileState extends State<UserProfile> {
                           ),
                           ProfileButton(
                             textButton: 'Mesaage',
-                            textColor: Colors.black,
+                            textColor: Colors.white,
                             backgroundColor: Color.fromARGB(255, 206, 197, 26),
                           ),
                         ],
