@@ -22,7 +22,7 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent[700],
+      backgroundColor: const Color.fromARGB(193, 5, 19, 58),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -31,7 +31,7 @@ class _UserProfileState extends State<UserProfile> {
               const SizedBox(
                 // Seccion del usuario
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -126,8 +126,16 @@ class _UserProfileState extends State<UserProfile> {
                         // Botones
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          ProfileButton(textButton: 'Follow'),
-                          ProfileButton(textButton: 'Mesaage'),
+                          ProfileButton(
+                            textButton: 'Follow',
+                            textColor: Color.fromARGB(255, 206, 197, 26),
+                            backgroundColor: Colors.white,
+                          ),
+                          ProfileButton(
+                            textButton: 'Mesaage',
+                            textColor: Colors.black,
+                            backgroundColor: Color.fromARGB(255, 206, 197, 26),
+                          ),
                         ],
                       ),
                     ],
