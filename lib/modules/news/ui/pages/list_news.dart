@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_capacitaciones/modules/news/ui/widgets/page_header.dart';
+import 'package:flutter_capacitaciones/ui/routes/names.dart';
 
 class ListNewsPage extends StatefulWidget {
   const ListNewsPage({super.key});
@@ -10,6 +12,17 @@ class ListNewsPage extends StatefulWidget {
 class _ListNewsPageState extends State<ListNewsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Text("Lista");
+    return SafeArea(
+        child: Column(
+      children: [
+        Center(
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(RoutesNames.detailNews);
+            },
+          ),
+        )
+      ],
+    ));
   }
 }

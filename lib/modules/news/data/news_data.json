@@ -1,0 +1,32 @@
+{
+  "noticias": [
+    {
+      "titulo": "La calidad de los que buscan gobernar está disminuyendo",
+      "descripcion": "Un análisis detallado sobre la calidad de los líderes políticos actuales.",
+      "fecha": "2024-03-25T15:11:00",
+      "imagen": "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/styles/banner/public/2024-05/dnr_2024_banner_compressed_14.jpg?itok=sD6idFo8",
+      "categoria": 1
+    },
+    {
+      "titulo": "Noticias políticas: Estado de la Unión, Casa Blanca, fotos y más",
+      "descripcion": "Últimas noticias y actualizaciones sobre la Casa Blanca y eventos políticos.",
+      "fecha": "2024-03-21T11:05:00",
+      "imagen": "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/styles/banner/public/2024-05/dnr_2024_banner_compressed_14.jpg?itok=sD6idFo8",
+      "categoria": 1
+    },
+    {
+      "titulo": "La economía global está en riesgo",
+      "descripcion": "Un informe sobre las tendencias económicas globales y sus impactos.",
+      "fecha": "2024-04-10T09:30:00",
+      "imagen": "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/styles/banner/public/2024-05/dnr_2024_banner_compressed_14.jpg?itok=sD6idFo8",
+      "categoria": 2
+    },
+    {
+      "titulo": "Innovaciones tecnológicas en 2024",
+      "descripcion": "Un vistazo a las innovaciones tecnológicas más esperadas este año.",
+      "fecha": "2024-04-15T14:45:00",
+      "imagen": "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/styles/banner/public/2024-05/dnr_2024_banner_compressed_14.jpg?itok=sD6idFo8",
+      "categoria": 3
+    }
+  ]
+}
