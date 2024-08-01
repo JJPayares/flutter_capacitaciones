@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_capacitaciones/modules/user_profile/ui/pages/user_profile.dart';
+import 'package:flutter_capacitaciones/ui/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UserProfile(),
+      home: const UserProfile(),
+      onGenerateRoute: (settings) {
+        return CustomRoutes.routes(settings);
+      },
     );
   }
 }

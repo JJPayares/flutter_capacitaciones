@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_capacitaciones/ui/routes/names.dart';
+import 'package:flutter_capacitaciones/ui/routes/routes.dart';
 
 class ProfileButton extends StatelessWidget {
   const ProfileButton({
@@ -15,7 +17,9 @@ class ProfileButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushNamed(RoutesNames.detailNews);
+      },
       style: ElevatedButton.styleFrom(
         foregroundColor: textColor,
         backgroundColor: backgroundColor,
