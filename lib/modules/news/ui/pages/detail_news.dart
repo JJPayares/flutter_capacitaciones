@@ -1,47 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_capacitaciones/modules/news/ui/widgets/news_card.dart';
-import 'package:flutter_capacitaciones/modules/news/ui/widgets/page_header.dart';
-import 'package:flutter_capacitaciones/ui/routes/names.dart';
+import 'package:flutter_capacitaciones/modules/news/data/models/news.dart';
 
-class DetailNewsPage extends StatefulWidget {
-  const DetailNewsPage({super.key});
+class DetailNewsPage extends StatelessWidget {
+  final Noticia noticia;
 
-  @override
-  State<DetailNewsPage> createState() => _DetailNewsPageState();
-}
+  const DetailNewsPage({super.key, required this.noticia});
 
-class _DetailNewsPageState extends State<DetailNewsPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        title: const PageHeader(
-          textTitle: 'Detail News ',
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+    return Scaffold(
       backgroundColor: const Color.fromARGB(242, 238, 234, 234),
       body: SingleChildScrollView(
-          child: Column(
-        children: [
-          const NewsCard(
-            imageUrl:
-                'https://reutersinstitute.politics.ox.ac.uk/sites/default/files/styles/banner/public/2024-05/dnr_2024_banner_compressed_14.jpg?itok=sD6idFo8',
-            title: 'Test',
-            date: '2023-02-01',
-          ),
-          Center(
-            child: FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(RoutesNames.userProfile);
-              },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(noticia.imagen),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                noticia.titulo,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
-        ],
-      )),
-    ));
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                noticia.fecha,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                noticia.descripcion,
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Return to previous screen
+                },
+                child: const Text('Back'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

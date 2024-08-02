@@ -42,6 +42,7 @@ class _ListNewsPageState extends State<ListNewsPage> {
             itemBuilder: (context, index) {
               final noticia = noticias[index];
               return NewsCard(
+                news: noticia,
                 imageUrl: noticia.imagen,
                 title: noticia.titulo,
                 date: noticia.fecha,
