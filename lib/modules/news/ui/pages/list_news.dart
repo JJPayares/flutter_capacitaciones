@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_capacitaciones/modules/news/ui/widgets/page_header.dart';
 import 'package:flutter_capacitaciones/ui/routes/names.dart';
 
 class ListNewsPage extends StatefulWidget {
