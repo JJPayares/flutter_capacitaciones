@@ -1,6 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/category_bloc/categorias_bloc.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/category_bloc/categorias_event.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/category_bloc/categorias_state.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_bloc.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_event.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_state.dart';
 import 'package:flutter_capacitaciones/modules/news/data/models/category.dart';
 import 'package:flutter_capacitaciones/modules/news/data/models/news.dart';
 import 'package:flutter_capacitaciones/modules/news/data/repository/repository.dart';
@@ -20,27 +27,17 @@ class _ListNewsPageState extends State<ListNewsPage> {
   late Future<List<Noticia>> futureNoticias;
   late Future<List<Categoria>> futureCategoria;
   Categoria? selectedCategory;
-  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    futureNoticias = cargarNoticias(null);
-    futureCategoria = cargarCategorias();
+    context.read<NewsBloc>().add(const FetchNews(null));
+    context.read<CategoryBloc>().add(FetchCategories());
   }
 
   void _onCategoryChanged(Categoria? newCategory) {
     setState(() {
-      selectedCategory = newCategory;
       futureNoticias = cargarNoticias(newCategory?.id);
-    });
-  }
-
-  void _clearFilter() {
-    setState(() {
-      _searchController.clear();
-      selectedCategory = null;
-      futureNoticias = cargarNoticias(null);
     });
   }
 
@@ -48,41 +45,37 @@ class _ListNewsPageState extends State<ListNewsPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FutureBuilder<List<Categoria>>(
-          future: futureCategoria,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
+        BlocBuilder<CategoryBloc, CategoryState>(
+          builder: (context, state) {
+            if (state is CategoryLoading) {
               return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              log('Categories: ${snapshot.error.toString()}');
+            } else if (state is CategoryError) {
+              log('Categories: ${state.message}');
               return const Center(
                   child: Text('Error al cargar las categorías'));
-            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(child: Text('No hay categorías disponibles'));
-            } else {
-              final categorias = snapshot.data!;
+            } else if (state is CategoryLoaded) {
+              final categorias = state.categories;
               return CustomTabBar(
                 categorias: categorias,
                 selectedCategory: selectedCategory,
                 onChanged: _onCategoryChanged,
               );
+            } else {
+              return const Center(child: Text('No hay categorías disponibles'));
             }
           },
         ),
         Expanded(
-          child: FutureBuilder<List<Noticia>>(
-            future: futureNoticias,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+          child: BlocBuilder<NewsBloc, NewsState>(
+            builder: (context, state) {
+              if (state is NewsLoading) {
                 return const Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                log('List News: ${snapshot.error.toString()}');
+              } else if (state is NewsError) {
+                log('List News: ${state.message}');
                 return const Center(
                     child: Text('Error al cargar las noticias'));
-              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                return const Center(child: Text('No hay noticias disponibles'));
-              } else {
-                final noticias = snapshot.data!;
+              } else if (state is NewsLoaded) {
+                final noticias = state.noticias;
                 return ListView.builder(
                   itemCount: noticias.length,
                   itemBuilder: (context, index) {
@@ -95,6 +88,8 @@ class _ListNewsPageState extends State<ListNewsPage> {
                     );
                   },
                 );
+              } else {
+                return const Center(child: Text('No hay noticias disponibles'));
               }
             },
           ),
