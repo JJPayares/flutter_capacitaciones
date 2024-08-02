@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_capacitaciones/modules/news/data/models/category.dart';
 import 'package:flutter_capacitaciones/modules/news/data/models/news.dart';
 import 'package:flutter_capacitaciones/modules/news/data/repository/repository.dart';
-import 'package:flutter_capacitaciones/modules/news/ui/widgets/custom_dropdown.dart';
+import 'package:flutter_capacitaciones/modules/news/ui/widgets/custom_tap_bar.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/widgets/news_card.dart';
 
 class ListNewsPage extends StatefulWidget {
@@ -61,41 +61,13 @@ class _ListNewsPageState extends State<ListNewsPage> {
               return const Center(child: Text('No hay categorías disponibles'));
             } else {
               final categorias = snapshot.data!;
-              return CustomDropdown(
+              return CustomTabBar(
                 categorias: categorias,
                 selectedCategory: selectedCategory,
                 onChanged: _onCategoryChanged,
               );
             }
           },
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Flexible(
-                flex: 6,
-                child: TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
-                    hintText: 'Buscar noticias',
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 12.0),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8.0),
-              IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: _clearFilter,
-              ),
-            ],
-          ),
         ),
         Expanded(
           child: FutureBuilder<List<Noticia>>(
