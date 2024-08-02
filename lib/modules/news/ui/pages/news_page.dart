@@ -23,10 +23,7 @@ class _NewsPageState extends State<NewsPage> {
         elevation: 0,
       ),
       backgroundColor: const Color.fromARGB(242, 238, 234, 234),
-      body: const SingleChildScrollView(
-          child: Column(
-        children: [ListNewsPage()],
-      )),
+      body: const ListNewsPage(),
     ));
   }
 }
