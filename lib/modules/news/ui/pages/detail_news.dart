@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_capacitaciones/modules/news/data/models/news.dart';
+import 'package:flutter_capacitaciones/modules/news/ui/widgets/base_text.dart';
 
 class DetailNewsPage extends StatelessWidget {
   final Noticia noticia;
@@ -9,6 +10,14 @@ class DetailNewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const BaseText(
+          textTitle: 'News Details ',
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       backgroundColor: const Color.fromARGB(242, 238, 234, 234),
       body: SingleChildScrollView(
         child: Column(

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PageHeader extends StatefulWidget {
-  const PageHeader({super.key, this.textTitle, this.fontSize, this.color});
+class BaseText extends StatefulWidget {
+  const BaseText({super.key, this.textTitle, this.fontSize, this.color});
 
   final String? textTitle;
   final double? fontSize;
-  final MaterialColor? color;
+  final dynamic color;
 
   @override
-  State<PageHeader> createState() => _PageHeaderState();
+  State<BaseText> createState() => _BaseTextState();
 }
 
-class _PageHeaderState extends State<PageHeader> {
+class _BaseTextState extends State<BaseText> {
   @override
   Widget build(BuildContext context) {
     return Text(widget.textTitle ?? 'Default Title',

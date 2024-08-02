@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_capacitaciones/modules/news/data/models/category.dart';
+import 'package:flutter_capacitaciones/modules/news/data/repository/repository.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/pages/list_news.dart';
-import 'package:flutter_capacitaciones/modules/news/ui/widgets/page_header.dart';
+import 'package:flutter_capacitaciones/modules/news/ui/widgets/base_text.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -10,19 +12,27 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
+  late Future<List<Categoria>> futureCategory;
+
+  @override
+  void initState() {
+    super.initState();
+    futureCategory = cargarCategorias();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: const PageHeader(
+        title: const BaseText(
           textTitle: 'News ',
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
       ),
-      backgroundColor: const Color.fromARGB(242, 238, 234, 234),
+      backgroundColor: const Color.fromARGB(240, 152, 177, 234),
       body: const ListNewsPage(),
     ));
   }
