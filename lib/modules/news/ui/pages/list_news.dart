@@ -9,8 +9,6 @@ import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/notici
 import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_event.dart';
 import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_state.dart';
 import 'package:flutter_capacitaciones/modules/news/data/models/category.dart';
-import 'package:flutter_capacitaciones/modules/news/data/models/news.dart';
-import 'package:flutter_capacitaciones/modules/news/data/repository/repository.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/widgets/custom_tap_bar.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/widgets/news_card.dart';
 
@@ -24,8 +22,6 @@ class ListNewsPage extends StatefulWidget {
 }
 
 class _ListNewsPageState extends State<ListNewsPage> {
-  late Future<List<Noticia>> futureNoticias;
-  late Future<List<Categoria>> futureCategoria;
   Categoria? selectedCategory;
 
   @override
@@ -36,9 +32,7 @@ class _ListNewsPageState extends State<ListNewsPage> {
   }
 
   void _onCategoryChanged(Categoria? newCategory) {
-    setState(() {
-      futureNoticias = cargarNoticias(newCategory?.id);
-    });
+    context.read<NewsBloc>().add(FetchNews(newCategory?.id));
   }
 
   @override
