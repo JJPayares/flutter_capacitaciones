@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_capacitaciones/modules/news/data/models/news.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/pages/detail_news.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/widgets/bookmark_icon.dart';
+import 'package:flutter_capacitaciones/modules/news/ui/widgets/card_buttons.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/widgets/custom_card.dart';
 
 class NewsCard extends StatelessWidget {
@@ -99,6 +100,7 @@ class NewsCard extends StatelessWidget {
                   child: const BookmarkIcon(),
                 ),
               ),
+              const Positioned(child: CardButtons())
             ],
           ),
         ),
