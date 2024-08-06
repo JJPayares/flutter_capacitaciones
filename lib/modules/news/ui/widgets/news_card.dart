@@ -5,11 +5,12 @@ import 'package:flutter_capacitaciones/modules/news/ui/widgets/bookmark_icon.dar
 import 'package:flutter_capacitaciones/modules/news/ui/widgets/card_buttons.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/widgets/custom_card.dart';
 
-class NewsCard extends StatelessWidget {
+class NewsCard extends StatefulWidget {
   final Noticia news;
   final String imageUrl;
   final String title;
   final String date;
+  final int id;
 
   const NewsCard({
     super.key,
@@ -17,8 +18,14 @@ class NewsCard extends StatelessWidget {
     required this.title,
     required this.date,
     required this.news,
+    required this.id,
   });
 
+  @override
+  State<NewsCard> createState() => _NewsCardState();
+}
+
+class _NewsCardState extends State<NewsCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +35,7 @@ class NewsCard extends StatelessWidget {
           // Handle the tap event here
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => DetailNewsPage(noticia: news),
+              builder: (context) => DetailNewsPage(noticia: widget.news),
             ),
           );
         },
@@ -49,7 +56,7 @@ class NewsCard extends StatelessWidget {
                       topRight: Radius.circular(16),
                     ),
                     child: Image.network(
-                      imageUrl,
+                      widget.imageUrl,
                       width: double.infinity,
                       height: 200,
                       fit: BoxFit.cover,
@@ -61,7 +68,7 @@ class NewsCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          title,
+                          widget.title,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -69,7 +76,7 @@ class NewsCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          date,
+                          widget.date,
                           style: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -100,7 +107,10 @@ class NewsCard extends StatelessWidget {
                   child: const BookmarkIcon(),
                 ),
               ),
-              const Positioned(child: CardButtons())
+              Positioned(
+                  child: CardButtons(
+                newsId: widget.id,
+              ))
             ],
           ),
         ),

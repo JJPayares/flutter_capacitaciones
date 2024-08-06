@@ -1,4 +1,5 @@
 class Noticia {
+  final int id;
   final String titulo;
   final String descripcion;
   final String fecha;
@@ -6,6 +7,7 @@ class Noticia {
   final int categoria;
 
   Noticia({
+    required this.id,
     required this.titulo,
     required this.descripcion,
     required this.fecha,
@@ -15,6 +17,7 @@ class Noticia {
 
   factory Noticia.fromJson(Map<String, dynamic> json) {
     return Noticia(
+      id: json['id'],
       titulo: json['titulo'],
       descripcion: json['descripcion'],
       fecha: json['fecha'],
@@ -22,4 +25,6 @@ class Noticia {
       categoria: json['categoria'],
     );
   }
+
+  toJson() {}
 }

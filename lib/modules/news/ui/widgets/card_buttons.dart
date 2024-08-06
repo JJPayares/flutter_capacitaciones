@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_bloc.dart';
+import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_event.dart';
 
 class CardButtons extends StatefulWidget {
-  const CardButtons({super.key});
+  const CardButtons({super.key, required this.newsId});
+
+  final int newsId;
 
   @override
   State<CardButtons> createState() => CardButtonsState();
@@ -14,17 +19,13 @@ class CardButtonsState extends State<CardButtons> {
       IconButton(
         icon: const Icon(Icons.edit),
         color: Colors.blueAccent,
-        onPressed: () {
-          // Acción para editar la noticia
-          print('Editar noticia');
-        },
+        onPressed: () {},
       ),
       IconButton(
         icon: const Icon(Icons.delete),
         color: Colors.red,
         onPressed: () {
-          // Acción para eliminar la noticia
-          print('Eliminar noticia');
+          context.read<NewsBloc>().add(DeleteNews(widget.newsId));
         },
       )
     ]);

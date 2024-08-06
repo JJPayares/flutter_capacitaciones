@@ -82,6 +82,7 @@ class _ListNewsPageState extends State<ListNewsPage> {
                         imageUrl: noticia.imagen,
                         title: noticia.titulo,
                         date: noticia.fecha,
+                        id: noticia.id,
                       );
                     },
                   );

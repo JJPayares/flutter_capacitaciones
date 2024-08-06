@@ -24,3 +24,12 @@ class SearchNews extends NewsEvent {
   @override
   List<Object> get props => [query];
 }
+
+class DeleteNews extends NewsEvent {
+  final int newsId;
+
+  const DeleteNews(this.newsId);
+
+  @override
+  List<Object> get props => [newsId];
+}
