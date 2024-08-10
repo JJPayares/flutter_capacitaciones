@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_event.dart';
 import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_state.dart';
@@ -11,6 +13,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     on<FetchNews>(_onFetchNews);
     on<SearchNews>(_onSearchNews);
     on<DeleteNews>(_onDeleteNews);
+    on<EditNews>(_onEditNews);
   }
 
   void _onFetchNews(FetchNews event, Emitter<NewsState> emit) async {
@@ -42,6 +45,38 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     emit(NewsLoading());
     try {
       _noticias.removeWhere((noticia) => noticia.id == event.newsId);
+      emit(NewsLoaded(_noticias));
+    } catch (e) {
+      emit(NewsError(e.toString()));
+    }
+  }
+
+  void _onEditNews(EditNews event, Emitter<NewsState> emit) {
+    emit(NewsLoading());
+    try {
+      Noticia noticia =
+          _noticias.firstWhere((noticia) => noticia.id == event.newsId);
+      log(noticia.toString());
+      // if (event.titulo.isNotEmpty) {
+      //   noticia.titulo = event.titulo;
+      // }
+
+      // if (event.descripcion.isNotEmpty) {
+      //   noticia.descripcion = event.descripcion;
+      // }
+
+      // if (event.fecha.isNotEmpty) {
+      //   noticia.fecha = event.fecha;
+      // }
+
+      // if (event.imagen.isNotEmpty) {
+      //   noticia.imagen = event.imagen;
+      // }
+
+      // if (!event.categoria.isNaN) {
+      //   noticia.categoria = event.categoria;
+      // }
+
       emit(NewsLoaded(_noticias));
     } catch (e) {
       emit(NewsError(e.toString()));

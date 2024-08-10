@@ -1,10 +1,10 @@
 class Noticia {
-  final int id;
-  final String titulo;
-  final String descripcion;
-  final String fecha;
-  final String imagen;
-  final int categoria;
+  int id;
+  String titulo;
+  String descripcion;
+  String fecha;
+  String imagen;
+  int categoria;
 
   Noticia({
     required this.id,

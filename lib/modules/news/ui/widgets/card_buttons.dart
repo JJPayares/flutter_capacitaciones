@@ -19,7 +19,9 @@ class CardButtonsState extends State<CardButtons> {
       IconButton(
         icon: const Icon(Icons.edit),
         color: Colors.blueAccent,
-        onPressed: () {},
+        onPressed: () {
+          context.read<NewsBloc>().add(EditNews(widget.newsId));
+        },
       ),
       IconButton(
         icon: const Icon(Icons.delete),

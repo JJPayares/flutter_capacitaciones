@@ -18,7 +18,7 @@ class DetailNewsPage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      backgroundColor: const Color.fromARGB(242, 238, 234, 234),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
