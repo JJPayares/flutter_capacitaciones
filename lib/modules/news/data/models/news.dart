@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Noticia {
   int id;
   String titulo;
@@ -25,6 +27,9 @@ class Noticia {
       categoria: json['categoria'],
     );
   }
+
+  static List<Noticia> newsFromJson(String str) =>
+      List<Noticia>.from(json.decode(str).map((x) => Noticia.fromJson(x)));
 
   toJson() {}
 }

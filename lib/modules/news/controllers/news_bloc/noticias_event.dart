@@ -36,17 +36,8 @@ class DeleteNews extends NewsEvent {
 
 class EditNews extends NewsEvent {
   int newsId;
-  // String titulo;
-  // String descripcion;
-  // String fecha;
-  // String imagen;
-  // int categoria;
 
   EditNews(this.newsId);
-  // EditNews(this.newsId, this.titulo, this.descripcion, this.fecha, this.imagen,
-  //     this.categoria);
-
   @override
   List<Object> get props => [newsId];
-  // [newsId, titulo, descripcion, fecha, imagen, categoria];
 }
