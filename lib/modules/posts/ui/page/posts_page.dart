@@ -28,6 +28,11 @@ class _PostsPageState extends State<PostsPage> {
                   final post = state.posts[index];
                   return PostCard(
                     post: post,
+                    onDelete: () {
+                      context
+                          .read<PostsBloc>()
+                          .add(DeletePosts(idPost: post.id));
+                    },
                   );
                 },
               );
@@ -41,7 +46,7 @@ class _PostsPageState extends State<PostsPage> {
                 const Text('Algo paso con la API. Presione para recargar.'),
                 IconButton(
                     onPressed: () =>
-                        context.read<PostsBloc>().add(FetchPosts()),
+                        context.read<PostsBloc>().add(const FetchPosts()),
                     icon: const Icon(Icons.refresh))
               ],
             ));

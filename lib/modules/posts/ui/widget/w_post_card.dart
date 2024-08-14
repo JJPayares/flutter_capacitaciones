@@ -4,7 +4,7 @@ import 'package:flutter_capacitaciones/modules/posts/data/model/m_posts.dart';
 class PostCard extends StatelessWidget {
   final Posts post;
   final VoidCallback? onEdit;
-  final VoidCallback? onDelete;
+  final void Function()? onDelete;
 
   const PostCard({
     Key? key,

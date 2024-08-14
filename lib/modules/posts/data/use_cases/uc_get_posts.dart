@@ -16,7 +16,8 @@ class GetPostsUseCase extends UseCase<List<Posts>, GetPostUseCaseParams> {
 
   @override
   Future<List<Posts>> call({GetPostUseCaseParams? params}) async {
-    http.Response response = await repository.getPosts(idPost: params?.idPost);
+    http.Response response = await repository.getPosts(
+        idPost: params?.idPost != null ? params!.idPost : -1);
 
     switch (response.statusCode) {
       case 200:

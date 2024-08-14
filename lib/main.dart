@@ -5,6 +5,7 @@ import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/notici
 import 'package:flutter_capacitaciones/modules/news/ui/pages/news_page.dart';
 import 'package:flutter_capacitaciones/modules/posts/controller/bloc/posts_bloc.dart';
 import 'package:flutter_capacitaciones/modules/posts/data/repository/r_posts.dart';
+import 'package:flutter_capacitaciones/modules/posts/data/use_cases/uc_delte_posts.dart';
 import 'package:flutter_capacitaciones/modules/posts/data/use_cases/uc_get_posts.dart';
 import 'package:flutter_capacitaciones/modules/posts/ui/page/posts_page.dart';
 import 'package:flutter_capacitaciones/ui/routes/routes.dart';
@@ -28,6 +29,8 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => PostsBloc(
+              deletePostsUseCase:
+                  DeletePostsUseCase(repository: PostsRepository()),
               getPostsUseCase: GetPostsUseCase(repository: PostsRepository())),
         ),
       ],
