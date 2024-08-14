@@ -4,13 +4,19 @@ import 'package:flutter_capacitaciones/modules/posts/data/model/m_posts.dart';
 import 'package:flutter_capacitaciones/modules/posts/data/repository/r_posts.dart';
 import "package:http/http.dart" as http;
 
-class GetPostsUseCase extends UseCaseNoParams<List<Posts>> {
+class GetPostUseCaseParams extends Params {
+  final int? idPost;
+
+  GetPostUseCaseParams({this.idPost});
+}
+
+class GetPostsUseCase extends UseCase<List<Posts>, GetPostUseCaseParams> {
   GetPostsUseCase({required this.repository});
   final PostsRepository repository;
 
   @override
-  Future<List<Posts>> call() async {
-    http.Response response = await repository.getPosts();
+  Future<List<Posts>> call({GetPostUseCaseParams? params}) async {
+    http.Response response = await repository.getPosts(idPost: params?.idPost);
 
     switch (response.statusCode) {
       case 200:
