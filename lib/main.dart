@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_capacitaciones/modules/news/controllers/category_bloc/categorias_bloc.dart';
 import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_bloc.dart';
 import 'package:flutter_capacitaciones/modules/news/ui/pages/news_page.dart';
+import 'package:flutter_capacitaciones/modules/posts/controller/bloc/posts_bloc.dart';
+import 'package:flutter_capacitaciones/modules/posts/data/repository/r_posts.dart';
+import 'package:flutter_capacitaciones/modules/posts/data/use_cases/uc_get_posts.dart';
+import 'package:flutter_capacitaciones/modules/posts/ui/page/posts_page.dart';
 import 'package:flutter_capacitaciones/ui/routes/routes.dart';
 
 void main() {
@@ -22,10 +26,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => CategoryBloc(),
         ),
+        BlocProvider(
+          create: (context) => PostsBloc(
+              getPostsUseCase: GetPostsUseCase(repository: PostsRepository())),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const NewsPage(),
+        home: const PostsPage(),
         onGenerateRoute: (settings) {
           return CustomRoutes.routes(settings);
         },

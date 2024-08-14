@@ -35,9 +35,9 @@ class DeleteNews extends NewsEvent {
 }
 
 class EditNews extends NewsEvent {
-  int newsId;
+  final int newsId;
 
-  EditNews(this.newsId);
+  const EditNews(this.newsId);
   @override
   List<Object> get props => [newsId];
 }
