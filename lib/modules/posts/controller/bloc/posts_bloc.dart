@@ -28,15 +28,13 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
   }
 
   void _onDeletePosts(DeletePosts event, Emitter<PostsState> emit) async {
-    final response = await deletePostsUseCase!(params: event.idPost);
-    log("onDeletePost: ${response.body}");
-    emit(PostsDeleted(message: response.toString()));
-    // try {
-    //   final response = await deletePostsUseCase!();
-    //   log("onDeletePost: ${response.body}");
-    //   emit(PostsDeleted(message: response.toString()));
-    // } catch (e) {
-    //   emit(PostsError(message: e.toString()));
-    // }
+    try {
+      await deletePostsUseCase?.call(
+          params: DeletePostUseCaseParams(post: event.post));
+      log("Se borrø el Post: ${event.post!.toJson()}");
+      emit(PostsDeleted(post: event.post));
+    } catch (e) {
+      emit(PostsError(message: e.toString()));
+    }
   }
 }

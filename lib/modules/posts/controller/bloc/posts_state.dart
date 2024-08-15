@@ -20,13 +20,14 @@ class PostsLoaded extends PostsState {
   @override
   List<Object?> get props => [posts];
 }
-class PostsDeleted extends PostsState {
-  final String message;
 
-  const PostsDeleted({required this.message});
+class PostsDeleted extends PostsState {
+  final Posts? post;
+
+  const PostsDeleted({required this.post});
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [post];
 }
 
 class PostsError extends PostsState {

@@ -29,9 +29,7 @@ class _PostsPageState extends State<PostsPage> {
                   return PostCard(
                     post: post,
                     onDelete: () {
-                      context
-                          .read<PostsBloc>()
-                          .add(DeletePosts(idPost: post.id));
+                      context.read<PostsBloc>().add(DeletePosts(post: post));
                     },
                   );
                 },

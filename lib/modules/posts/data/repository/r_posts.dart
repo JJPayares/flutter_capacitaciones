@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_capacitaciones/base/repository.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,7 +18,6 @@ class PostsRepository extends BaseRepository {
     if (idPost != null && idPost != -1) {
       url = '$baseUrl/$idPost';
     }
-    log("Delete Post repository: $url");
     return await http.Client().delete(Uri.parse(url), headers: {});
   }
 }

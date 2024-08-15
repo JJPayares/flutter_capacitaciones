@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_capacitaciones/modules/posts/data/model/m_posts.dart';
 
 abstract class PostsEvent extends Equatable {
   const PostsEvent();
@@ -14,10 +15,10 @@ class FetchPosts extends PostsEvent {
 }
 
 class DeletePosts extends PostsEvent {
-  final dynamic idPost;
+  final Posts? post;
 
-  const DeletePosts({this.idPost});
+  const DeletePosts({this.post});
 
   @override
-  List<Object?> get props => [idPost];
+  List<Object?> get props => [post];
 }
