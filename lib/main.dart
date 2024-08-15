@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_capacitaciones/modules/news/controllers/category_bloc/categorias_bloc.dart';
 import 'package:flutter_capacitaciones/modules/news/controllers/news_bloc/noticias_bloc.dart';
-import 'package:flutter_capacitaciones/modules/news/ui/pages/news_page.dart';
 import 'package:flutter_capacitaciones/modules/posts/controller/bloc/posts_bloc.dart';
 import 'package:flutter_capacitaciones/modules/posts/data/repository/r_posts.dart';
 import 'package:flutter_capacitaciones/modules/posts/data/use_cases/uc_delte_posts.dart';
