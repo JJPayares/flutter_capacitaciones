@@ -14,6 +14,12 @@ class PostsPage extends StatefulWidget {
 
 class _PostsPageState extends State<PostsPage> {
   @override
+  void initState() {
+    super.initState();
+    context.read<PostsBloc>().add(const FetchPosts());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
